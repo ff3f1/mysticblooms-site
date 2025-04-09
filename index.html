@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+    <!-- Подключите общие стили и мета-теги -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MysticBlooms 🌸</title>
@@ -12,25 +13,43 @@
         }
 
         body {
-            @apply bg-gradient-to-br from-[var(--primary)] to-[var(--secondary)] min-h-screen;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            min-height: 100vh;
+            color: white;
+            font-family: 'Arial', sans-serif;
         }
 
         .post-card {
-            @apply bg-white/10 backdrop-blur-lg rounded-xl p-4 mb-6 shadow-xl;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
 
         .pagination {
-            @apply flex justify-center gap-2 mt-8;
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
         }
 
         .page-link {
-            @apply px-4 py-2 rounded-lg bg-white/20 hover:bg-white/30 transition-colors;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
         }
+
+            .page-link:hover {
+                background: rgba(255, 255, 255, 0.3);
+            }
     </style>
 </head>
-<body class="text-white">
-    <!-- Шапка -->
-    <header class="py-6 bg-white/10">
+<body>
+    <!-- Шапка из header.html -->
+    <header class="py-6 bg-white/10 sticky top-0 z-50">
         <div class="max-w-4xl mx-auto px-4">
             <div class="post-card">
                 <script async src="https://telegram.org/js/telegram-widget.js?22"
