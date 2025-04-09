@@ -1,80 +1,67 @@
-// generate-pages.js
 const fs = require('fs');
 const { JSDOM } = require('jsdom');
 
-// 1. Удаляем старые файлы и создаем папки
+// Удаляем старые файлы
 if (fs.existsSync('pages')) fs.rmSync('pages', { recursive: true });
-fs.mkdirSync('pages', { recursive: true });
+fs.mkdirSync('pages');
 
-// 2. Загрузка шаблонов
-const head = fs.readFileSync('template-head.html', 'utf8');
-const header = fs.readFileSync('header.html', 'utf8');
-
-// 3. Парсинг архива с группировкой медиа
-const html = fs.readFileSync('messages.html', 'utf8');
-const dom = new JSDOM(html);
-const postsMap = new Map();
-
-Array.from(dom.window.document.querySelectorAll('.message')).forEach(msg => {
-  const id = msg.id.replace('message', '');
-  if (!id || isNaN(id)) return;
-
-  const content = msg.querySelector('.text')?.innerHTML || '';
-  const media = Array.from(msg.querySelectorAll('.media_wrap')).map(m => m.outerHTML).join('');
+// Шаблон страницы
+const template = (content, page, totalPages) => `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/styles.css">
+  <title>Страница ${page}</title>
+</head>
+<body>
+  <header>
+    <a href="/" class="header-link">← На главную</a>
+  </header>
   
-  if (!postsMap.has(id)) {
-    postsMap.set(id, {
-      content: content,
-      media: media
-    });
-  } else {
-    postsMap.get(id).media += media;
-  }
-});
+  <main>
+    ${content}
+    
+    <div class="pagination">
+      ${Array.from({ length: totalPages }, (_, i) => `
+        <a href="/page${i + 1}.html" class="page-link ${i + 1 === page ? 'active' : ''}">
+          ${i + 1}
+        </a>
+      `).join('')}
+    </div>
+  </main>
+</body>
+</html>
+`;
 
-// 4. Сортировка постов
-const sortedPosts = Array.from(postsMap.entries())
-  .sort((a, b) => b[0] - a[0])
-  .map(([id, post]) => ({ id, ...post }));
+// Парсим архив
+const dom = new JSDOM(fs.readFileSync('messages.html', 'utf8'));
+const posts = Array.from(dom.window.document.querySelectorAll('.message'))
+  .filter(msg => {
+    const id = msg.id.replace('message', '');
+    return !isNaN(id) && id !== '';
+  })
+  .map(msg => {
+    const media = Array.from(msg.querySelectorAll('.media_wrap'))
+      .map(m => m.outerHTML)
+      .join('');
+    return `<div class="post-card">${msg.innerHTML}${media}</div>`;
+  });
 
-// 5. Генерация страниц
+// Генерируем страницы
 const postsPerPage = 10;
-const totalPages = Math.ceil(sortedPosts.length / postsPerPage);
+const totalPages = Math.ceil(posts.length / postsPerPage);
 
 for (let page = 1; page <= totalPages; page++) {
   const start = (page - 1) * postsPerPage;
-  const pagePosts = sortedPosts.slice(start, start + postsPerPage);
+  const content = posts.slice(start, start + postsPerPage).join('');
   
-  const postsHtml = pagePosts.map(post => `
-    <div class="post-card">
-      ${post.content}
-      ${post.media}
-    </div>
-  `).join('');
-
-  const pagination = Array.from({ length: totalPages }, (_, i) => `
-    <a href="page${i + 1}.html" class="page-link ${i + 1 === page ? 'active' : ''}">
-      ${i + 1}
-    </a>
-  `).join('');
-
-  const fullHtml = `
-    <!DOCTYPE html>
-    <html>
-      <head>${head}</head>
-      <body>
-        ${header}
-        <main class="max-w-4xl mx-auto px-4 py-8">
-          ${postsHtml}
-          <div class="pagination">${pagination}</div>
-        </main>
-      </body>
-    </html>
-  `;
-
-  fs.writeFileSync(`pages/page${page}.html`, fullHtml);
+  fs.writeFileSync(
+    `pages/page${page}.html`, 
+    template(content, page, totalPages)
+  );
 }
 
-// Генерация главной страницы
+// Главная страница
 fs.copyFileSync('pages/page1.html', 'index.html');
 console.log('✅ Сгенерировано страниц:', totalPages);
