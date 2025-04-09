@@ -3,31 +3,34 @@ from jinja2 import Template
 import os
 import datetime
 
-# Настройки
 POSTS_PER_PAGE = 10
 
-# Парсим архив
 with open('messages.html', 'r', encoding='utf-8') as f:
     soup = BeautifulSoup(f, 'html.parser')
 
 posts = []
-for msg in soup.select('.message.default.clearfix'):
+for msg in soup.select('.message.default'):
     try:
         date_element = msg.select_one('.date')
-date_str = date_element['title'] if date_element else '01.01.2025 00:00:00 UTC+03:00'  # fallbac
-        post_id = msg['id'].split('-')[-1]
+        if not date_element:
+            continue
+        
+        date_str = date_element['title'].split('UTC')[0].strip()
+        post_date = datetime.datetime.strptime(date_str, "%d.%m.%Y %H:%M:%S")
+        
+        post_id = int(msg['id'].split('-')[-1])
+        
         posts.append({
-            'id': int(post_id),
-            'date': datetime.datetime.strptime(date_str, "%d.%m.%Y %H:%M:%S UTC+03:00"),
+            'id': post_id,
+            'date': post_date,
             'content': str(msg)
         })
-    except:
+    except Exception as e:
+        print(f"Ошибка в посте: {str(e)}")
         continue
 
-# Сортируем от новых к старым
 posts.sort(key=lambda x: x['date'], reverse=True)
 
-# Генерируем страницы
 total_pages = (len(posts) + POSTS_PER_PAGE - 1) // POSTS_PER_PAGE
 
 for page in range(total_pages):
