@@ -1,29 +1,32 @@
 const fs = require('fs');
 const { JSDOM } = require('jsdom');
 
-// 1. Создаем папку pages, если её нет
-if (!fs.existsSync('pages')) {
-  fs.mkdirSync('pages', { recursive: true });
+// Удаляем старую папку pages при каждом запуске
+if (fs.existsSync('pages')) {
+  fs.rmSync('pages', { recursive: true, force: true });
 }
+fs.mkdirSync('pages', { recursive: true });
 
-// 2. Парсим ваш архив messages.html
+// Парсинг архива
 const html = fs.readFileSync('messages.html', 'utf8');
 const dom = new JSDOM(html);
 
-// 3. Получаем все ID сообщений
+// Получение уникальных ID сообщений
 const messages = Array.from(dom.window.document.querySelectorAll('.message'))
-  .filter(msg => msg.id.startsWith('message') && !isNaN(msg.id.replace('message', '')))
-  .map(msg => parseInt(msg.id.replace('message', '')))
-  .filter((v, i, a) => a.indexOf(v) === i) // Удаляем дубли
-  .sort((a, b) => b - a); // Сортируем от новых к старым
+  .map(msg => msg.id.replace('message', ''))
+  .filter(id => !isNaN(id) && id !== '') // Фильтр числовых ID
+  .map(Number)
+  .filter((v, i, a) => a.indexOf(v) === i) // Уникальные значения
+  .sort((a, b) => b - a); // Сортировка новых -> старых
 
-// 4. Шаблон HTML-страницы
-const template = `
+// Шаблон с динамической меткой времени
+const template = (content) => `
 <!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Generated: ${new Date().toISOString()} -->
   <title>MysticBlooms</title>
   <link rel="stylesheet" href="/css/main.css">
 </head>
@@ -32,20 +35,18 @@ const template = `
     <a href="/" class="header-link">На главную</a>
   </header>
   <main class="posts-container">
-    <!-- CONTENT -->
+    ${content}
   </main>
 </body>
 </html>
 `;
 
-// 5. Генерируем страницы
+// Генерация страниц
 const postsPerPage = 10;
 for (let page = 1; page <= Math.ceil(messages.length / postsPerPage); page++) {
   const start = (page - 1) * postsPerPage;
-  const end = page * postsPerPage;
-  
   const content = messages
-    .slice(start, end)
+    .slice(start, start + postsPerPage)
     .map(id => `
       <div class="post-card">
         <script async src="https://telegram.org/js/telegram-widget.js?22" 
@@ -54,10 +55,9 @@ for (let page = 1; page <= Math.ceil(messages.length / postsPerPage); page++) {
           data-dark="1">
         </script>
       </div>
-    `)
-    .join('');
+    `).join('');
 
-  fs.writeFileSync(`pages/page${page}.html`, template.replace('<!-- CONTENT -->', content));
+  fs.writeFileSync(`pages/page${page}.html`, template(content));
 }
 
-console.log('✅ Страницы успешно сгенерированы в папке pages/');
+console.log('✅ Сгенерировано страниц:', messages.length);
