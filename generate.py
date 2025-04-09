@@ -13,7 +13,8 @@ with open('messages.html', 'r', encoding='utf-8') as f:
 posts = []
 for msg in soup.select('.message.default.clearfix'):
     try:
-        date_str = msg.select_one('.date')['title']
+        date_element = msg.select_one('.date')
+date_str = date_element['title'] if date_element else '01.01.2025 00:00:00 UTC+03:00'  # fallbac
         post_id = msg['id'].split('-')[-1]
         posts.append({
             'id': int(post_id),
