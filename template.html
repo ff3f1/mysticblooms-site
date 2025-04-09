@@ -1,86 +1,77 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MysticBlooms 🌸</title>
-  <style>
-    :root {
-      --bg: #2d1b69;
-      --card: #3f2a8c;
-      --accent: #c4b5fd;
-    }
-    body {
-      background: var(--bg) !important;
-      color: white !important;
-      font-family: -apple-system, sans-serif;
-      margin: 0;
-      padding: 20px;
-      min-height: 100vh;
-    }
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    .header {
-      background: var(--card);
-      padding: 2rem;
-      border-radius: 1rem;
-      margin-bottom: 2rem;
-    }
-    .post {
-      background: var(--card);
-      border-radius: 1rem;
-      margin-bottom: 1.5rem;
-      padding: 1.5rem;
-    }
-    .pagination {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      padding: 2rem 0;
-    }
-    .pagination a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-    .pagination a:hover {
-      text-decoration: underline;
-    }
-    /* Фикс для Telegram Widget */
-    .telegram-post {
-      all: initial !important;
-      display: block !important;
-      width: 100% !important;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MysticBlooms 🌸</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: #2d1b69 !important;
+            color: white !important;
+        }
+
+        .telegram-post {
+            margin-bottom: 2rem;
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+    </style>
 </head>
-<body>
-  <div class="container">
-    <div class="header">
-      <h1>MysticBlooms 🌸</h1>
-      <p style="color: var(--accent);">Цветочная магия, дизайн и вдохновение</p>
-    </div>
-
-    <div class="posts">
-      {% for post in posts %}
-        <div class="post">
-          {{ post.content | safe }}
+<body class="p-4">
+    <div class="max-w-3xl mx-auto">
+        <!-- Шапка -->
+        <div class="bg-purple-700 p-4 rounded-xl mb-6">
+            <h1 class="text-2xl font-bold">MysticBlooms 🌸</h1>
+            <p class="text-purple-200">Цветочная магия, дизайн и вдохновение</p>
         </div>
-      {% endfor %}
+
+        <!-- Посты -->
+        <div id="posts-container"></div>
+
+        <!-- Пагинация -->
+        <div class="flex justify-center space-x-4 mt-6 text-purple-300" id="pagination"></div>
     </div>
 
-    <div class="pagination">
-      {% if current_page > 1 %}
-        <a href="{% if current_page == 2 %}index.html{% else %}page{{ current_page - 1 }}.html{% endif %}">← Назад</a>
-      {% endif %}
-      
-      <span>Страница {{ current_page }} из {{ total_pages }}</span>
-      
-      {% if current_page < total_pages %}
-        <a href="page{{ current_page + 1 }}.html">Далее →</a>
-      {% endif %}
-    </div>
-  </div>
+    <script>
+    // Конфигурация
+    const CHANNEL = 'mysticbloomsflower'
+    const POSTS_PER_PAGE = 10
+    let currentPage = 1
+
+    // Загрузка постов
+    async function loadPosts(page) {
+      const fromPost = (page - 1) * POSTS_PER_PAGE + 1
+      const toPost = page * POSTS_PER_PAGE
+
+      let html = ''
+      for(let postId = fromPost; postId <= toPost; postId++){
+        html += `
+          <div class="telegram-post">
+            <script async src="https://telegram.org/js/telegram-widget.js?22"
+              data-telegram-post="${CHANNEL}/${postId}"
+              data-width="100%"
+            ><\/script>
+          </div>
+        `
+      }
+
+      document.getElementById('posts-container').innerHTML = html
+      updatePagination(page)
+    }
+
+    // Пагинация
+    function updatePagination(page) {
+      const pagination = document.getElementById('pagination')
+      pagination.innerHTML = `
+        ${page > 1 ? `<a href="#" onclick="loadPosts(${page-1})" class="hover:text-white">← Назад</a>` : ''}
+        <span>Страница ${page}</span>
+        <a href="#" onclick="loadPosts(${page+1})" class="hover:text-white">Далее →</a>
+      `
+    }
+
+    // Инициализация
+    loadPosts(1)
+    </script>
 </body>
 </html>
