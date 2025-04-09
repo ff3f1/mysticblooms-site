@@ -1,50 +1,267 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MysticBlooms 🌸 — страница 2</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MysticBlooms 🌸</title>
+  <style>
+    :root {
+      --bg: #2d1b69;
+      --card: #3f2a8c;
+      --accent: #c4b5fd;
+    }
+    body {
+      background: var(--bg) !important;
+      color: white !important;
+      font-family: sans-serif;
+      margin: 0;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .header {
+      background: var(--card);
+      padding: 2rem;
+      border-radius: 1rem;
+      margin-bottom: 2rem;
+    }
+    .post {
+      background: var(--card);
+      border-radius: 1rem;
+      margin-bottom: 1.5rem;
+      padding: 1.5rem;
+    }
+    .pagination {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      padding: 2rem 0;
+    }
+    .pagination a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .pagination a:hover {
+      text-decoration: underline;
+    }
+    .telegram-post {
+      all: unset !important;
+    }
+  </style>
 </head>
-<body class="bg-purple-950 text-white font-sans">
-  <div class="max-w-3xl mx-auto p-4 space-y-6">
-
-    <!-- Шапка -->
-    <a href="index.html" class="block bg-purple-700 p-4 rounded-xl shadow hover:bg-purple-600 transition">
-      <h1 class="text-2xl font-bold">MysticBlooms 🌸</h1>
-      <p class="text-sm text-purple-200">Цветочная магия, дизайн и вдохновение</p>
-    </a>
-
-    <!-- Посты -->
-    <div class="space-y-4">
-      <script async src="https://telegram.org/js/telegram-widget.js?22"
-        data-telegram-post="mysticbloomsflower/76" data-width="100%"></script>
-      <script async src="https://telegram.org/js/telegram-widget.js?22"
-        data-telegram-post="mysticbloomsflower/75" data-width="100%"></script>
-      <script async src="https://telegram.org/js/telegram-widget.js?22"
-        data-telegram-post="mysticbloomsflower/74" data-width="100%"></script>
-      <script async src="https://telegram.org/js/telegram-widget.js?22"
-        data-telegram-post="mysticbloomsflower/73" data-width="100%"></script>
-      <script async src="https://telegram.org/js/telegram-widget.js?22"
-        data-telegram-post="mysticbloomsflower/72" data-width="100%"></script>
-      <script async src="https://telegram.org/js/telegram-widget.js?22"
-        data-telegram-post="mysticbloomsflower/71" data-width="100%"></script>
-      <script async src="https://telegram.org/js/telegram-widget.js?22"
-        data-telegram-post="mysticbloomsflower/70" data-width="100%"></script>
-      <script async src="https://telegram.org/js/telegram-widget.js?22"
-        data-telegram-post="mysticbloomsflower/69" data-width="100%"></script>
-      <script async src="https://telegram.org/js/telegram-widget.js?22"
-        data-telegram-post="mysticbloomsflower/68" data-width="100%"></script>
-      <script async src="https://telegram.org/js/telegram-widget.js?22"
-        data-telegram-post="mysticbloomsflower/67" data-width="100%"></script>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>MysticBlooms 🌸</h1>
+      <p style="color: var(--accent);">Цветочная магия, дизайн и вдохновение</p>
     </div>
 
-    <!-- Навигация -->
-    <div class="flex justify-center space-x-4 pt-6">
-      <a href="index.html" class="hover:underline">← 1</a>
-      <span class="text-gray-400">2</span>
-      <a href="page3.html" class="hover:underline">3</a>
-      <a href="page4.html" class="hover:underline">4</a>
+    <div class="posts">
+      
+        <div class="post">
+          <div class="message default clearfix joined" id="message87">
+<div class="body">
+<div class="pull_right date details" title="08.04.2025 15:46:23 UTC+03:00">
+15:46
+       </div>
+<div class="media_wrap clearfix">
+<a class="photo_wrap clearfix pull_left" href="photos/photo_79@08-04-2025_15-46-23.jpg">
+<img class="photo" src="photos/photo_79@08-04-2025_15-46-23_thumb.jpg" style="width: 194px; height: 260px"/>
+</a>
+</div>
+</div>
+</div>
+        </div>
+      
+        <div class="post">
+          <div class="message default clearfix" id="message69">
+<div class="pull_left userpic_wrap">
+<div class="userpic userpic1" style="width: 42px; height: 42px">
+<div class="initials" style="line-height: 42px">
+Ц
+        </div>
+</div>
+</div>
+<div class="body">
+<div class="pull_right date details" title="06.04.2025 16:04:10 UTC+03:00">
+16:04
+       </div>
+<div class="from_name">
+Цветы Mystic blooms Москва 
+       </div>
+<div class="media_wrap clearfix">
+<a class="photo_wrap clearfix pull_left" href="photos/photo_62@06-04-2025_16-04-10.jpg">
+<img class="photo" src="photos/photo_62@06-04-2025_16-04-10_thumb.jpg" style="width: 260px; height: 260px"/>
+</a>
+</div>
+<div class="text">
+Розовая подборка
+       </div>
+<span class="reactions">
+<span class="reaction">
+<span class="emoji">
+🔥
+         </span>
+<span class="count">
+2
+         </span>
+</span>
+<span class="reaction">
+<span class="emoji">
+🥰
+         </span>
+<span class="count">
+1
+         </span>
+</span>
+<span class="reaction">
+<span class="emoji">
+💔
+         </span>
+<span class="count">
+1
+         </span>
+</span>
+</span>
+</div>
+</div>
+        </div>
+      
+        <div class="post">
+          <div class="message default clearfix joined" id="message70">
+<div class="body">
+<div class="pull_right date details" title="06.04.2025 16:04:10 UTC+03:00">
+16:04
+       </div>
+<div class="media_wrap clearfix">
+<a class="photo_wrap clearfix pull_left" href="photos/photo_63@06-04-2025_16-04-10.jpg">
+<img class="photo" src="photos/photo_63@06-04-2025_16-04-10_thumb.jpg" style="width: 195px; height: 260px"/>
+</a>
+</div>
+</div>
+</div>
+        </div>
+      
+        <div class="post">
+          <div class="message default clearfix joined" id="message71">
+<div class="body">
+<div class="pull_right date details" title="06.04.2025 16:04:10 UTC+03:00">
+16:04
+       </div>
+<div class="media_wrap clearfix">
+<a class="photo_wrap clearfix pull_left" href="photos/photo_64@06-04-2025_16-04-10.jpg">
+<img class="photo" src="photos/photo_64@06-04-2025_16-04-10_thumb.jpg" style="width: 242px; height: 260px"/>
+</a>
+</div>
+</div>
+</div>
+        </div>
+      
+        <div class="post">
+          <div class="message default clearfix joined" id="message72">
+<div class="body">
+<div class="pull_right date details" title="06.04.2025 16:04:10 UTC+03:00">
+16:04
+       </div>
+<div class="media_wrap clearfix">
+<a class="photo_wrap clearfix pull_left" href="photos/photo_65@06-04-2025_16-04-10.jpg">
+<img class="photo" src="photos/photo_65@06-04-2025_16-04-10_thumb.jpg" style="width: 260px; height: 248px"/>
+</a>
+</div>
+</div>
+</div>
+        </div>
+      
+        <div class="post">
+          <div class="message default clearfix joined" id="message73">
+<div class="body">
+<div class="pull_right date details" title="06.04.2025 16:04:10 UTC+03:00">
+16:04
+       </div>
+<div class="media_wrap clearfix">
+<a class="photo_wrap clearfix pull_left" href="photos/photo_66@06-04-2025_16-04-10.jpg">
+<img class="photo" src="photos/photo_66@06-04-2025_16-04-10_thumb.jpg" style="width: 260px; height: 260px"/>
+</a>
+</div>
+</div>
+</div>
+        </div>
+      
+        <div class="post">
+          <div class="message default clearfix joined" id="message74">
+<div class="body">
+<div class="pull_right date details" title="06.04.2025 16:04:10 UTC+03:00">
+16:04
+       </div>
+<div class="media_wrap clearfix">
+<a class="photo_wrap clearfix pull_left" href="photos/photo_67@06-04-2025_16-04-10.jpg">
+<img class="photo" src="photos/photo_67@06-04-2025_16-04-10_thumb.jpg" style="width: 260px; height: 250px"/>
+</a>
+</div>
+</div>
+</div>
+        </div>
+      
+        <div class="post">
+          <div class="message default clearfix joined" id="message75">
+<div class="body">
+<div class="pull_right date details" title="06.04.2025 16:04:10 UTC+03:00">
+16:04
+       </div>
+<div class="media_wrap clearfix">
+<a class="photo_wrap clearfix pull_left" href="photos/photo_68@06-04-2025_16-04-10.jpg">
+<img class="photo" src="photos/photo_68@06-04-2025_16-04-10_thumb.jpg" style="width: 258px; height: 260px"/>
+</a>
+</div>
+</div>
+</div>
+        </div>
+      
+        <div class="post">
+          <div class="message default clearfix joined" id="message76">
+<div class="body">
+<div class="pull_right date details" title="06.04.2025 16:04:10 UTC+03:00">
+16:04
+       </div>
+<div class="media_wrap clearfix">
+<a class="photo_wrap clearfix pull_left" href="photos/photo_69@06-04-2025_16-04-10.jpg">
+<img class="photo" src="photos/photo_69@06-04-2025_16-04-10_thumb.jpg" style="width: 260px; height: 259px"/>
+</a>
+</div>
+</div>
+</div>
+        </div>
+      
+        <div class="post">
+          <div class="message default clearfix joined" id="message77">
+<div class="body">
+<div class="pull_right date details" title="06.04.2025 16:04:10 UTC+03:00">
+16:04
+       </div>
+<div class="media_wrap clearfix">
+<a class="photo_wrap clearfix pull_left" href="photos/photo_70@06-04-2025_16-04-10.jpg">
+<img class="photo" src="photos/photo_70@06-04-2025_16-04-10_thumb.jpg" style="width: 260px; height: 248px"/>
+</a>
+</div>
+</div>
+</div>
+        </div>
+      
+    </div>
+
+    <div class="pagination">
+      
+        <a href="index.html">← Назад</a>
+      
+      
+      <span>Страница 2 из 9</span>
+      
+      
+        <a href="page3.html">Далее →</a>
+      
     </div>
   </div>
 </body>
