@@ -9,11 +9,12 @@
         body {
             background: #2d1b69 !important;
             color: white !important;
+            font-family: -apple-system, sans-serif;
         }
 
         .telegram-post {
-            margin: 20px 0;
-            border-radius: 15px;
+            margin: 1.5rem 0;
+            border-radius: 1rem;
             overflow: hidden;
         }
     </style>
@@ -27,57 +28,26 @@
         </div>
 
         <!-- Посты -->
-        <div id="posts"></div>
+        <div>
+            <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="mysticbloomsflower/97" data-width="100%"></script>
+            <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="mysticbloomsflower/95" data-width="100%"></script>
+            <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="mysticbloomsflower/87" data-width="100%"></script>
+            <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="mysticbloomsflower/86" data-width="100%"></script>
+            <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="mysticbloomsflower/85" data-width="100%"></script>
+            <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="mysticbloomsflower/84" data-width="100%"></script>
+            <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="mysticbloomsflower/83" data-width="100%"></script>
+            <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="mysticbloomsflower/82" data-width="100%"></script>
+            <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="mysticbloomsflower/81" data-width="100%"></script>
+            <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="mysticbloomsflower/80" data-width="100%"></script>
+        </div>
 
         <!-- Пагинация -->
-        <div class="flex gap-4 justify-center mt-6 text-purple-300">
-            <button onclick="prevPage()" class="hover:text-white">← Назад</button>
-            <span id="page-num">1</span>
-            <button onclick="nextPage()" class="hover:text-white">Далее →</button>
+        <div class="flex justify-center gap-4 mt-6 text-purple-300">
+            <span class="text-purple-500">1</span>
+            <a href="page2.html" class="hover:text-white">2</a>
+            <a href="page3.html" class="hover:text-white">3</a>
+            <a href="page4.html" class="hover:text-white">4</a>
         </div>
     </div>
-
-    <script>
-        let currentPage = 1
-        const postsPerPage = 10
-
-        function loadPosts(page) {
-            const container = document.getElementById('posts')
-            let html = ''
-
-            // Генерация ID постов для текущей страницы
-            const startId = (page - 1) * postsPerPage + 1
-            const endId = page * postsPerPage
-
-            for (let postId = startId; postId <= endId; postId++) {
-                html += `
-              <div class="telegram-post">
-                <script async src="https://telegram.org/js/telegram-widget.js?22"
-                  data-telegram-post="mysticbloomsflower/${postId}"
-                  data-width="100%"
-                ><\/script>
-              </div>
-            `
-            }
-
-            container.innerHTML = html
-            document.getElementById('page-num').textContent = page
-        }
-
-        function prevPage() {
-            if (currentPage > 1) {
-                currentPage--
-                loadPosts(currentPage)
-            }
-        }
-
-        function nextPage() {
-            currentPage++
-            loadPosts(currentPage)
-        }
-
-        // Старт
-        loadPosts(1)
-    </script>
 </body>
 </html>
