@@ -13,14 +13,14 @@
     body {
       background: var(--bg) !important;
       color: white !important;
-      font-family: sans-serif;
+      font-family: -apple-system, sans-serif;
       margin: 0;
+      padding: 20px;
       min-height: 100vh;
     }
     .container {
       max-width: 800px;
       margin: 0 auto;
-      padding: 20px;
     }
     .header {
       background: var(--card);
@@ -47,8 +47,11 @@
     .pagination a:hover {
       text-decoration: underline;
     }
+    /* Фикс для Telegram Widget */
     .telegram-post {
-      all: unset !important;
+      all: initial !important;
+      display: block !important;
+      width: 100% !important;
     }
   </style>
 </head>
