@@ -1,317 +1,74 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MysticBlooms 🌸</title>
-  <style>
-    :root {
-      --bg: #2d1b69;
-      --card: #3f2a8c;
-      --accent: #c4b5fd;
-    }
-    body {
-      background: var(--bg) !important;
-      color: white !important;
-      font-family: sans-serif;
-      margin: 0;
-      min-height: 100vh;
-    }
-    .container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-    .header {
-      background: var(--card);
-      padding: 2rem;
-      border-radius: 1rem;
-      margin-bottom: 2rem;
-    }
-    .post {
-      background: var(--card);
-      border-radius: 1rem;
-      margin-bottom: 1.5rem;
-      padding: 1.5rem;
-    }
-    .pagination {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      padding: 2rem 0;
-    }
-    .pagination a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-    .pagination a:hover {
-      text-decoration: underline;
-    }
-    .telegram-post {
-      all: unset !important;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MysticBlooms 🌸</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: #2d1b69 !important;
+            color: white !important;
+        }
+
+        .telegram-post {
+            margin-bottom: 2rem;
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+    </style>
 </head>
-<body>
-  <div class="container">
-    <div class="header">
-      <h1>MysticBlooms 🌸</h1>
-      <p style="color: var(--accent);">Цветочная магия, дизайн и вдохновение</p>
+<body class="p-4">
+    <div class="max-w-3xl mx-auto">
+        <!-- Шапка -->
+        <div class="bg-purple-700 p-4 rounded-xl mb-6">
+            <h1 class="text-2xl font-bold">MysticBlooms 🌸</h1>
+            <p class="text-purple-200">Цветочная магия, дизайн и вдохновение</p>
+        </div>
+
+        <!-- Посты -->
+        <div id="posts-container"></div>
+
+        <!-- Пагинация -->
+        <div class="flex justify-center space-x-4 mt-6 text-purple-300" id="pagination"></div>
     </div>
 
-    <div class="posts">
-      
-        <div class="post">
-          <div class="message default clearfix" id="message97">
-<div class="pull_left userpic_wrap">
-<div class="userpic userpic1" style="width: 42px; height: 42px">
-<div class="initials" style="line-height: 42px">
-Ц
-        </div>
-</div>
-</div>
-<div class="body">
-<div class="pull_right date details" title="09.04.2025 14:58:30 UTC+03:00">
-14:58
-       </div>
-<div class="from_name">
-Цветы Mystic blooms Москва 
-       </div>
-<div class="media_wrap clearfix">
-<a class="photo_wrap clearfix pull_left" href="photos/photo_82@09-04-2025_14-58-30.jpg">
-<img class="photo" src="photos/photo_82@09-04-2025_14-58-30_thumb.jpg" style="width: 260px; height: 260px"/>
-</a>
-</div>
-<div class="text">
-Маленький букетик для маленькой девочки 🌷
-       </div>
-<span class="reactions">
-<span class="reaction">
-<span class="emoji">
-🔥
-         </span>
-<span class="count">
-1
-         </span>
-</span>
-</span>
-</div>
-</div>
-        </div>
-      
-        <div class="post">
-          <div class="message default clearfix" id="message95">
-<div class="pull_left userpic_wrap">
-<div class="userpic userpic1" style="width: 42px; height: 42px">
-<div class="initials" style="line-height: 42px">
-Ц
-        </div>
-</div>
-</div>
-<div class="body">
-<div class="pull_right date details" title="09.04.2025 13:32:48 UTC+03:00">
-13:32
-       </div>
-<div class="from_name">
-Цветы Mystic blooms Москва 
-       </div>
-<div class="media_wrap clearfix">
-<a class="photo_wrap clearfix pull_left" href="photos/photo_80@09-04-2025_13-32-48.jpg">
-<img class="photo" src="photos/photo_80@09-04-2025_13-32-48_thumb.jpg" style="width: 247px; height: 260px"/>
-</a>
-</div>
-<div class="text">
-Большой букет с орхидеями, розой, альстромерий, сантини, эвкалиптом и маттиолой. <br/>Не совсем довольна формой, но пусть будет здесь, чтобы сравнить позже)
-       </div>
-<span class="reactions">
-<span class="reaction">
-<span class="emoji">
-🔥
-         </span>
-<span class="count">
-1
-         </span>
-</span>
-<span class="reaction">
-<span class="emoji">
-😎
-         </span>
-<span class="count">
-1
-         </span>
-</span>
-</span>
-</div>
-</div>
-        </div>
-      
-        <div class="post">
-          <div class="message default clearfix joined" id="message96">
-<div class="body">
-<div class="pull_right date details" title="09.04.2025 13:32:48 UTC+03:00">
-13:32
-       </div>
-<div class="media_wrap clearfix">
-<a class="photo_wrap clearfix pull_left" href="photos/photo_81@09-04-2025_13-32-48.jpg">
-<img class="photo" src="photos/photo_81@09-04-2025_13-32-48_thumb.jpg" style="width: 195px; height: 260px"/>
-</a>
-</div>
-</div>
-</div>
-        </div>
-      
-        <div class="post">
-          <div class="message default clearfix" id="message80">
-<div class="pull_left userpic_wrap">
-<div class="userpic userpic1" style="width: 42px; height: 42px">
-<div class="initials" style="line-height: 42px">
-Ц
-        </div>
-</div>
-</div>
-<div class="body">
-<div class="pull_right date details" title="08.04.2025 15:46:23 UTC+03:00">
-15:46
-       </div>
-<div class="from_name">
-Цветы Mystic blooms Москва 
-       </div>
-<div class="media_wrap clearfix">
-<a class="photo_wrap clearfix pull_left" href="photos/photo_72@08-04-2025_15-46-23.jpg">
-<img class="photo" src="photos/photo_72@08-04-2025_15-46-23_thumb.jpg" style="width: 146px; height: 260px"/>
-</a>
-</div>
-<span class="reactions">
-<span class="reaction">
-<span class="emoji">
-🔥
-         </span>
-<span class="count">
-2
-         </span>
-</span>
-<span class="reaction">
-<span class="emoji">
-❤
-         </span>
-<span class="count">
-1
-         </span>
-</span>
-<span class="reaction">
-<span class="emoji">
-👏
-         </span>
-<span class="count">
-1
-         </span>
-</span>
-</span>
-</div>
-</div>
-        </div>
-      
-        <div class="post">
-          <div class="message default clearfix joined" id="message81">
-<div class="body">
-<div class="pull_right date details" title="08.04.2025 15:46:23 UTC+03:00">
-15:46
-       </div>
-<div class="media_wrap clearfix">
-<a class="photo_wrap clearfix pull_left" href="photos/photo_73@08-04-2025_15-46-23.jpg">
-<img class="photo" src="photos/photo_73@08-04-2025_15-46-23_thumb.jpg" style="width: 146px; height: 260px"/>
-</a>
-</div>
-</div>
-</div>
-        </div>
-      
-        <div class="post">
-          <div class="message default clearfix joined" id="message82">
-<div class="body">
-<div class="pull_right date details" title="08.04.2025 15:46:23 UTC+03:00">
-15:46
-       </div>
-<div class="media_wrap clearfix">
-<a class="photo_wrap clearfix pull_left" href="photos/photo_74@08-04-2025_15-46-23.jpg">
-<img class="photo" src="photos/photo_74@08-04-2025_15-46-23_thumb.jpg" style="width: 146px; height: 260px"/>
-</a>
-</div>
-</div>
-</div>
-        </div>
-      
-        <div class="post">
-          <div class="message default clearfix joined" id="message83">
-<div class="body">
-<div class="pull_right date details" title="08.04.2025 15:46:23 UTC+03:00">
-15:46
-       </div>
-<div class="media_wrap clearfix">
-<a class="photo_wrap clearfix pull_left" href="photos/photo_75@08-04-2025_15-46-23.jpg">
-<img class="photo" src="photos/photo_75@08-04-2025_15-46-23_thumb.jpg" style="width: 193px; height: 260px"/>
-</a>
-</div>
-</div>
-</div>
-        </div>
-      
-        <div class="post">
-          <div class="message default clearfix joined" id="message84">
-<div class="body">
-<div class="pull_right date details" title="08.04.2025 15:46:23 UTC+03:00">
-15:46
-       </div>
-<div class="media_wrap clearfix">
-<a class="photo_wrap clearfix pull_left" href="photos/photo_76@08-04-2025_15-46-23.jpg">
-<img class="photo" src="photos/photo_76@08-04-2025_15-46-23_thumb.jpg" style="width: 193px; height: 260px"/>
-</a>
-</div>
-</div>
-</div>
-        </div>
-      
-        <div class="post">
-          <div class="message default clearfix joined" id="message85">
-<div class="body">
-<div class="pull_right date details" title="08.04.2025 15:46:23 UTC+03:00">
-15:46
-       </div>
-<div class="media_wrap clearfix">
-<a class="photo_wrap clearfix pull_left" href="photos/photo_77@08-04-2025_15-46-23.jpg">
-<img class="photo" src="photos/photo_77@08-04-2025_15-46-23_thumb.jpg" style="width: 196px; height: 260px"/>
-</a>
-</div>
-</div>
-</div>
-        </div>
-      
-        <div class="post">
-          <div class="message default clearfix joined" id="message86">
-<div class="body">
-<div class="pull_right date details" title="08.04.2025 15:46:23 UTC+03:00">
-15:46
-       </div>
-<div class="media_wrap clearfix">
-<a class="photo_wrap clearfix pull_left" href="photos/photo_78@08-04-2025_15-46-23.jpg">
-<img class="photo" src="photos/photo_78@08-04-2025_15-46-23_thumb.jpg" style="width: 195px; height: 260px"/>
-</a>
-</div>
-</div>
-</div>
-        </div>
-      
-    </div>
+    <script>
+    const CHANNEL = 'mysticbloomsflower'  // Ваш канал
+    const POSTS_PER_PAGE = 10             // Постов на странице
 
-    <div class="pagination">
-      
-      
-      <span>Страница 1 из 9</span>
-      
-      
-        <a href="page2.html">Далее →</a>
-      
-    </div>
-  </div>
+    function loadPosts(page) {
+      const container = document.getElementById('posts-container')
+      const pagination = document.getElementById('pagination')
+
+      // Генерация постов
+      let html = ''
+      const start = (page-1)*POSTS_PER_PAGE + 1
+      const end = page*POSTS_PER_PAGE
+
+      for(let i = start; i <= end; i++) {
+        html += `
+          <div class="telegram-post">
+            <script async src="https://telegram.org/js/telegram-widget.js?22"
+              data-telegram-post="${CHANNEL}/${i}"
+              data-width="100%"
+            ><\/script>
+          </div>
+        `
+      }
+
+      container.innerHTML = html
+
+      // Обновление пагинации
+      pagination.innerHTML = `
+        ${page > 1 ? `<a href="#" onclick="loadPosts(${page-1})" class="hover:text-white">← Назад</a>` : ''}
+        <span>Страница ${page}</span>
+        <a href="#" onclick="loadPosts(${page+1})" class="hover:text-white">Далее →</a>
+      `
+    }
+
+    // Старт
+    loadPosts(1)
+    </script>
 </body>
 </html>
