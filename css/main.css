@@ -1,0 +1,37 @@
+:root {
+  --main-bg: #2d1b69;
+  --accent: #8b5cf6;
+}
+
+* {
+  box-sizing: border-box;
+  transition: 0.3s ease;
+}
+
+body {
+  background: var(--main-bg);
+  color: white;
+  font-family: 'Arial', sans-serif;
+}
+
+.header {
+  background: rgba(45, 27, 105, 0.95);
+  padding: 1rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.post-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  margin: 2rem auto;
+  max-width: 800px;
+  padding: 1rem;
+}
+
+.tg-post iframe {
+  border: none !important;
+  background: transparent !important;
+}

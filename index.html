@@ -3,51 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MysticBlooms 🌸</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        body {
-            background: #2d1b69 !important;
-            color: white !important;
-            font-family: -apple-system, sans-serif;
-        }
-
-        .telegram-post {
-            margin: 1.5rem 0;
-            border-radius: 1rem;
-            overflow: hidden;
-        }
-    </style>
+    <title>MysticBlooms 🌸 | Главная</title>
+    <link rel="stylesheet" href="/css/main.css">
 </head>
-<body class="p-4">
-    <div class="max-w-3xl mx-auto">
-        <!-- Шапка -->
-        <div class="bg-purple-700 p-4 rounded-xl mb-6">
-            <h1 class="text-2xl font-bold">MysticBlooms 🌸</h1>
-            <p class="text-purple-200">Цветочная магия, дизайн и вдохновение</p>
-        </div>
+<body>
+    <div class="preloader"><div class="loader"></div></div>
 
+    <header class="header">
+        <a href="index.html" class="header-link">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            <span>Главная</span>
+        </a>
+    </header>
+
+    <main class="posts-container">
         <!-- Посты -->
-        <div>
-            <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="mysticbloomsflower/97" data-width="100%"></script>
-            <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="mysticbloomsflower/95" data-width="100%"></script>
-            <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="mysticbloomsflower/87" data-width="100%"></script>
-            <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="mysticbloomsflower/86" data-width="100%"></script>
-            <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="mysticbloomsflower/85" data-width="100%"></script>
-            <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="mysticbloomsflower/84" data-width="100%"></script>
-            <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="mysticbloomsflower/83" data-width="100%"></script>
-            <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="mysticbloomsflower/82" data-width="100%"></script>
-            <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="mysticbloomsflower/81" data-width="100%"></script>
-            <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-post="mysticbloomsflower/80" data-width="100%"></script>
+        <div class="post-card">
+            <script async src="https://telegram.org/js/telegram-widget.js?22"
+                    data-telegram-post="mysticbloomsflower/97"
+                    data-width="100%"
+                    data-dark="1"
+                    class="tg-post"></script>
         </div>
 
-        <!-- Пагинация -->
-        <div class="flex justify-center gap-4 mt-6 text-purple-300">
-            <span class="text-purple-500">1</span>
-            <a href="page2.html" class="hover:text-white">2</a>
-            <a href="page3.html" class="hover:text-white">3</a>
-            <a href="page4.html" class="hover:text-white">4</a>
+        <div class="post-card">
+            <script async src="https://telegram.org/js/telegram-widget.js?22"
+                    data-telegram-post="mysticbloomsflower/95"
+                    data-width="100%"
+                    data-dark="1"></script>
         </div>
-    </div>
+
+        <!-- Остальные посты -->
+        <!-- ... -->
+
+        <div class="pagination">
+            <span class="page-link active">1</span>
+            <a href="page2.html" class="page-link">2</a>
+            <a href="page3.html" class="page-link">3</a>
+            <a href="page4.html" class="page-link">4</a>
+            <a href="page5.html" class="page-link">5</a>
+        </div>
+    </main>
+
+    <script src="/js/app.js"></script>
 </body>
 </html>
