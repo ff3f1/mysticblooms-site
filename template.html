@@ -4,50 +4,67 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MysticBlooms 🌸</title>
-  <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
-      background: #2d1b69 !important;  /* фиолетовый фон */
+      background: #2d1b69 !important;
       color: #fff !important;
+      font-family: -apple-system, sans-serif;
+      margin: 0;
+      padding: 20px;
     }
-    .telegram-post {
-      background: #3f2a8c !important;  /* тёмные карточки */
-      border-radius: 1rem;
+    .header {
+      background: #4a2c9e;
       padding: 1.5rem;
-      margin-bottom: 1rem;
+      border-radius: 1rem;
+      margin-bottom: 2rem;
+    }
+    .post-card {
+      background: #3f2a8c;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .pagination {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      padding: 2rem 0;
+    }
+    .pagination a {
+      color: #c4b5fd;
+      text-decoration: none;
+    }
+    .pagination a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
-<body class="bg-purple-950 text-white font-sans">
-  <div class="max-w-3xl mx-auto p-4 space-y-6">
-    
-    <!-- Шапка -->
-    <a href="index.html" class="block bg-purple-700 p-4 rounded-xl shadow hover:bg-purple-600 transition">
-      <h1 class="text-2xl font-bold">MysticBlooms 🌸</h1>
-      <p class="text-sm text-purple-200">Цветочная магия, дизайн и вдохновение</p>
-    </a>
+<body>
+  <div class="header">
+    <h1>MysticBlooms 🌸</h1>
+    <p style="color: #c4b5fd;">Цветочная магия, дизайн и вдохновение</p>
+  </div>
 
-    <!-- Посты -->
-    <div class="space-y-4">
-      {% for post in posts %}
+  <div class="posts">
+    {% for post in posts %}
+      <div class="post-card">
         {{ post.content | safe }}
-      {% endfor %}
-    </div>
+      </div>
+    {% endfor %}
+  </div>
 
-    <!-- Пагинация -->
-    <div class="flex justify-center space-x-4 pt-6">
-      {% if current_page > 1 %}
-        <a href="{% if current_page == 2 %}index.html{% else %}page{{ current_page - 1 }}.html{% endif %}" class="hover:underline">←</a>
+  <div class="pagination">
+    {% if current_page > 1 %}
+      <a href="{% if current_page == 2 %}index.html{% else %}page{{ current_page - 1 }}.html{% endif %}">←</a>
+    {% endif %}
+    
+    {% for p in range(1, total_pages + 1) %}
+      {% if p == current_page %}
+        <span style="color: #7e6bb9;">{{ p }}</span>
+      {% else %}
+        <a href="{% if p == 1 %}index.html{% else %}page{{ p }}.html{% endif %}">{{ p }}</a>
       {% endif %}
-      
-      {% for p in range(1, total_pages + 1) %}
-        {% if p == current_page %}
-          <span class="text-gray-400">{{ p }}</span>
-        {% else %}
-          <a href="{% if p == 1 %}index.html{% else %}page{{ p }}.html{% endif %}" class="hover:underline">{{ p }}</a>
-        {% endif %}
-      {% endfor %}
-    </div>
+    {% endfor %}
   </div>
 </body>
 </html>
