@@ -1,5 +1,10 @@
 {
+  "name": "mysticblooms-site",
+  "version": "1.0.0",
+  "scripts": {
+    "generate": "node generate-pages.js"
+  },
   "dependencies": {
-    "jsdom": "^26.0.0"
+    "jsdom": "^24.0.0"
   }
 }
