@@ -23,4 +23,27 @@
         margin-bottom: 2rem;
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 2rem;
+    }
+
+    .page-link {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        transition: all 0.3s ease;
+    }
+
+        .page-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .page-link.active {
+            background: var(--secondary);
+            color: white;
+        }
 </style>

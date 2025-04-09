@@ -1,7 +1,7 @@
 
     <!DOCTYPE html>
-    <html lang="ru">
-    ﻿<meta charset="UTF-8">
+    <html>
+      <head>﻿<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MysticBlooms 🌸</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
@@ -26,26 +26,50 @@
         margin-bottom: 2rem;
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     }
-</style>
-    <body>
-      <!-- Шапка -->
-      <header class="py-6 bg-white/10 sticky top-0 z-50">
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 2rem;
+    }
+
+    .page-link {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        transition: all 0.3s ease;
+    }
+
+        .page-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .page-link.active {
+            background: var(--secondary);
+            color: white;
+        }
+</style></head>
+      <body>
+        <header class="py-6 bg-white/10 sticky top-0 z-50 shadow-xl">
     <div class="max-w-4xl mx-auto px-4">
         <div class="post-card">
             <script async src="https://telegram.org/js/telegram-widget.js?22"
                     data-telegram-post="mysticbloomsflower/97"
                     data-width="100%"
-                    data-dark="1">
+                    data-dark="1"
+                    data-color="FFFFFF">
             </script>
         </div>
     </div>
 </header>
-      
-      <!-- Посты -->
-      <main class="max-w-4xl mx-auto px-4 py-8">
-        
+        <main class="max-w-4xl mx-auto px-4 py-8">
+          
     <div class="post-card">
       
+Цветочные композиции в корзинах могут быть любого размера и состава🌷
+       
+      <div class="media_wrap clearfix">
 
         <a class="photo_wrap clearfix pull_left" href="photos/photo_14@25-03-2025_18-31-12.jpg">
 
@@ -53,11 +77,14 @@
 
         </a>
 
-       
+       </div>
     </div>
   
     <div class="post-card">
       
+Заказы на сегодня<br>Букет с белыми тюльпанами в количестве 35 штук<br>и букет с тюльпанами и альстромериями - 3100 р каждый.
+       
+      <div class="media_wrap clearfix">
 
         <a class="photo_wrap clearfix pull_left" href="photos/photo_13@25-03-2025_17-54-23.jpg">
 
@@ -65,11 +92,12 @@
 
         </a>
 
-       
+       </div>
     </div>
   
     <div class="post-card">
       
+      <div class="media_wrap clearfix">
 
         <a class="photo_wrap clearfix pull_left" href="photos/photo_12@25-03-2025_17-54-23.jpg">
 
@@ -77,11 +105,12 @@
 
         </a>
 
-       
+       </div>
     </div>
   
     <div class="post-card">
       
+      <div class="media_wrap clearfix">
 
         <a class="photo_wrap clearfix pull_left" href="photos/photo_11@25-03-2025_16-47-31.jpg">
 
@@ -89,11 +118,12 @@
 
         </a>
 
-       
+       </div>
     </div>
   
     <div class="post-card">
       
+      <div class="media_wrap clearfix">
 
         <a class="photo_wrap clearfix pull_left" href="photos/photo_10@25-03-2025_16-47-31.jpg">
 
@@ -101,11 +131,12 @@
 
         </a>
 
-       
+       </div>
     </div>
   
     <div class="post-card">
       
+      <div class="media_wrap clearfix">
 
         <a class="photo_wrap clearfix pull_left" href="photos/photo_9@25-03-2025_16-47-31.jpg">
 
@@ -113,11 +144,12 @@
 
         </a>
 
-       
+       </div>
     </div>
   
     <div class="post-card">
       
+      <div class="media_wrap clearfix">
 
         <a class="photo_wrap clearfix pull_left" href="photos/photo_8@25-03-2025_16-47-31.jpg">
 
@@ -125,11 +157,12 @@
 
         </a>
 
-       
+       </div>
     </div>
   
     <div class="post-card">
       
+      <div class="media_wrap clearfix">
 
         <a class="photo_wrap clearfix pull_left" href="photos/photo_7@25-03-2025_16-47-31.jpg">
 
@@ -137,11 +170,12 @@
 
         </a>
 
-       
+       </div>
     </div>
   
     <div class="post-card">
       
+      <div class="media_wrap clearfix">
 
         <a class="photo_wrap clearfix pull_left" href="photos/photo_6@25-03-2025_16-47-31.jpg">
 
@@ -149,11 +183,12 @@
 
         </a>
 
-       
+       </div>
     </div>
   
     <div class="post-card">
       
+      <div class="media_wrap clearfix">
 
         <a class="photo_wrap clearfix pull_left" href="photos/photo_5@25-03-2025_16-47-31.jpg">
 
@@ -161,35 +196,51 @@
 
         </a>
 
-       
+       </div>
     </div>
   
-        
-        <!-- Пагинация -->
-        <div class="pagination">
-          
-            <a href="page1.html" class="page-link">1</a>
-          
-            <a href="page2.html" class="page-link">2</a>
-          
-            <a href="page3.html" class="page-link">3</a>
-          
-            <a href="page4.html" class="page-link">4</a>
-          
-            <a href="page5.html" class="page-link">5</a>
-          
-            <a href="page6.html" class="page-link">6</a>
-          
-            <a href="page7.html" class="page-link">7</a>
-          
-            <a href="page8.html" class="page-link">8</a>
-          
-            <a href="page9.html" class="page-link">9</a>
-          
-            <a href="page10.html" class="page-link">10</a>
-          
-        </div>
-      </main>
-    </body>
+          <div class="pagination">
+    <a href="page1.html" class="page-link ">
+      1
+    </a>
+  
+    <a href="page2.html" class="page-link ">
+      2
+    </a>
+  
+    <a href="page3.html" class="page-link ">
+      3
+    </a>
+  
+    <a href="page4.html" class="page-link ">
+      4
+    </a>
+  
+    <a href="page5.html" class="page-link ">
+      5
+    </a>
+  
+    <a href="page6.html" class="page-link ">
+      6
+    </a>
+  
+    <a href="page7.html" class="page-link ">
+      7
+    </a>
+  
+    <a href="page8.html" class="page-link active">
+      8
+    </a>
+  
+    <a href="page9.html" class="page-link ">
+      9
+    </a>
+  
+    <a href="page10.html" class="page-link ">
+      10
+    </a>
+  </div>
+        </main>
+      </body>
     </html>
   
