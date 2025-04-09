@@ -3,51 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MysticBlooms 🌸 | Главная</title>
-    <link rel="stylesheet" href="/css/main.css">
-</head>
-<body>
-    <div class="preloader"><div class="loader"></div></div>
+    <title>MysticBlooms 🌸</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <style>
+        :root {
+            --primary: #4a306d; /* Приглушенный фиолетовый */
+            --secondary: #3c8d6e; /* Муреновый зеленый */
+        }
 
-    <header class="header">
-        <a href="index.html" class="header-link">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                <polyline points="9 22 9 12 15 12 15 22"></polyline>
-            </svg>
-            <span>Главная</span>
-        </a>
+        body {
+            @apply bg-gradient-to-br from-[var(--primary)] to-[var(--secondary)] min-h-screen;
+        }
+
+        .post-card {
+            @apply bg-white/10 backdrop-blur-lg rounded-xl p-4 mb-6 shadow-xl;
+        }
+
+        .pagination {
+            @apply flex justify-center gap-2 mt-8;
+        }
+
+        .page-link {
+            @apply px-4 py-2 rounded-lg bg-white/20 hover:bg-white/30 transition-colors;
+        }
+    </style>
+</head>
+<body class="text-white">
+    <!-- Шапка -->
+    <header class="py-6 bg-white/10">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="post-card">
+                <script async src="https://telegram.org/js/telegram-widget.js?22"
+                        data-telegram-post="mysticbloomsflower/97"
+                        data-width="100%"
+                        data-dark="1">
+                </script>
+            </div>
+        </div>
     </header>
 
-    <main class="posts-container">
-        <!-- Посты -->
-        <div class="post-card">
-            <script async src="https://telegram.org/js/telegram-widget.js?22"
-                    data-telegram-post="mysticbloomsflower/97"
-                    data-width="100%"
-                    data-dark="1"
-                    class="tg-post"></script>
+    <!-- Основной контент -->
+    <main class="max-w-4xl mx-auto px-4 py-8">
+        <div id="posts">
+            <!-- Посты будут здесь -->
         </div>
 
-        <div class="post-card">
-            <script async src="https://telegram.org/js/telegram-widget.js?22"
-                    data-telegram-post="mysticbloomsflower/95"
-                    data-width="100%"
-                    data-dark="1"></script>
-        </div>
-
-        <!-- Остальные посты -->
-        <!-- ... -->
-
+        <!-- Пагинация -->
         <div class="pagination">
-            <span class="page-link active">1</span>
+            <a href="page1.html" class="page-link">1</a>
             <a href="page2.html" class="page-link">2</a>
             <a href="page3.html" class="page-link">3</a>
-            <a href="page4.html" class="page-link">4</a>
-            <a href="page5.html" class="page-link">5</a>
         </div>
     </main>
-
-    <script src="/js/app.js"></script>
 </body>
 </html>
