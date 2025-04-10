@@ -1,24 +1,6 @@
 {
-  "name": "mysticblooms-site",
-  "version": "1.0.0",
-  "description": "",
-  "main": "generate-pages.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ff3f1/mysticblooms-site.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/ff3f1/mysticblooms-site/issues"
-  },
-  "homepage": "https://github.com/ff3f1/mysticblooms-site#readme",
-  "dependencies": {
-    "jsdom": "^26.0.0"
+    "generate": "node generate-pages.js",
+    "build": "npm run generate && shx cp pages/page1.html index.html"
   }
 }

@@ -1,67 +1,45 @@
 const fs = require('fs');
-const { JSDOM } = require('jsdom');
+const path = require('path');
 
-// Удаляем старые файлы
-if (fs.existsSync('pages')) fs.rmSync('pages', { recursive: true });
-fs.mkdirSync('pages');
+// Пути к файлам
+const DATA_PATH = './data/mock-data.json';
+const OUTPUT_DIR = './pages';
 
-// Шаблон страницы
-const template = (content, page, totalPages) => `
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="/styles.css">
-  <title>Страница ${page}</title>
-</head>
-<body>
-  <header>
-    <a href="/" class="header-link">← На главную</a>
-  </header>
-  
-  <main>
-    ${content}
-    
-    <div class="pagination">
-      ${Array.from({ length: totalPages }, (_, i) => `
-        <a href="/page${i + 1}.html" class="page-link ${i + 1 === page ? 'active' : ''}">
-          ${i + 1}
-        </a>
-      `).join('')}
-    </div>
-  </main>
-</body>
-</html>
-`;
+// Создаем папки
+[OUTPUT_DIR, './photos'].forEach(dir => {
+  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+});
 
-// Парсим архив
-const dom = new JSDOM(fs.readFileSync('messages.html', 'utf8'));
-const posts = Array.from(dom.window.document.querySelectorAll('.message'))
-  .filter(msg => {
-    const id = msg.id.replace('message', '');
-    return !isNaN(id) && id !== '';
-  })
-  .map(msg => {
-    const media = Array.from(msg.querySelectorAll('.media_wrap'))
-      .map(m => m.outerHTML)
-      .join('');
-    return `<div class="post-card">${msg.innerHTML}${media}</div>`;
-  });
+// Чтение данных
+const posts = JSON.parse(fs.readFileSync(DATA_PATH, 'utf-8'));
 
-// Генерируем страницы
-const postsPerPage = 10;
-const totalPages = Math.ceil(posts.length / postsPerPage);
+// Генерация страниц
+posts.forEach((post, index) => {
+  const pageNumber = index + 1;
+  const html = `
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="UTF-8">
+      <title>${post.text}</title>
+      <link rel="stylesheet" href="../css/style.css">
+    </head>
+    <body>
+      <header>
+        <a href="../index.html" class="back-link">← Назад</a>
+      </header>
+      <div class="post-card">
+        <div class="date">${post.date}</div>
+        <img src="../photos/${post.photo}" 
+             alt="${post.text}"
+             onerror="this.src='../photos/${post.photo.replace('.jpg', '_thumb.jpg')}'">
+        <p>${post.text}</p>
+      </div>
+    </body>
+    </html>
+  `;
 
-for (let page = 1; page <= totalPages; page++) {
-  const start = (page - 1) * postsPerPage;
-  const content = posts.slice(start, start + postsPerPage).join('');
-  
-  fs.writeFileSync(
-    `pages/page${page}.html`, 
-    template(content, page, totalPages)
-  );
-}
+  fs.writeFileSync(path.join(OUTPUT_DIR, `page${pageNumber}.html`), html);
+});
 
-// Главная страница
-fs.copyFileSync('pages/page1.html', 'index.html');
-console.log('✅ Сгенерировано страниц:', totalPages);
+console.log('Сгенерировано страниц:', posts.length);
