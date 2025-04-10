@@ -1,31 +1,46 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <title>MysticBlooms 🌸</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <header>
-      <div class="post pinned">
-        <p>Добро пожаловать в наш цветочный рай! 🌸<br>Ты теперь часть уютного сообщества...</p>
-      </div>
-    </header>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mystic Blooms - Архив</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <a href="/" class="logo">Mystic Blooms</a>
+      <nav>
+        <a href="messages.html" class="nav-link">Полный архив</a>
+      </nav>
+    </div>
+  </header>
 
-    <main>
-      <div class="posts">
-        <!-- Посты с 36 по 27 -->
-        <div class="post"><img src="photos/photo_36.jpg"><p>Текст поста 36</p></div>
-        <div class="post"><img src="photos/photo_35.jpg"><p>Текст поста 35</p></div>
-        ...
-        <div class="post"><img src="photos/photo_27.jpg"><p>Текст поста 27</p></div>
+  <main class="container">
+    <div class="post-card">
+      <div class="post-meta">
+        <span class="date">08.04.2025</span>
+        <span class="time">15:46</span>
       </div>
-    </main>
+      <div class="post-content">
+        <img src="./photos/photo_73@08-04-2025_15-46-23.jpg" 
+             alt="Цветочная композиция"
+             onerror="this.onerror=null;this.src='./photos/photo_73@08-04-2025_15-46-23_thumb.jpg'">
+      </div>
+    </div>
 
-    <footer>
-      <a href="page2.html">2</a>
-      <a href="page3.html">3</a>
-      <a href="page4.html">4</a>
-    </footer>
-  </body>
+    <div class="pagination">
+      <a href="#" class="page-link active">1</a>
+      <a href="page2.html" class="page-link">2</a>
+      <a href="page3.html" class="page-link">3</a>
+      <!-- Добавьте другие страницы -->
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Mystic Blooms. Все права защищены.</p>
+  </footer>
+
+  <script src="./js/script.js"></script>
+</body>
 </html>
